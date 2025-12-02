@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Sign-In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            margin-top: 25px;
+            width: 130px;
+        }
+
+        .container {
+            width: 350px;
+            border: 1px solid #ddd;
+            padding: 25px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #f0c14b;
+            border: 1px solid #a88734;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background-color: #e1b041;
+        }
+
+        .small-link {
+            font-size: 12px;
+            color: #0066c0;
+            text-decoration: none;
+        }
+        .small-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .new-account-btn {
+            width: 350px;
+            padding: 10px;
+            background-color: #e7e9ec;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .new-account-btn:hover {
+            background-color: #d4d5d7;
+        }
+         .new-businessaccount-btn {
+            width: 350px;
+            padding: 10px;
+            background-color: #e7e9ec;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .new-businessaccount-btn:hover {
+            background-color: #d4d5d7;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        footer a {
+            color: #0066c0;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="logo">
+
+    <div class="container">
+        <h2>Sign in</h2>
+
+        <label>Email or mobile phone number</label>
+        <input type="text" id="email">
+        <p class="error" id="emailError"></p>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <p class="error" id="passwordError"></p>
+         <a href="index.html">
+        <button class="btn" onclick="signIn()">Continue</button>
+         </a>
+        <p style="font-size:12px;margin-top:10px;">
+            By continuing, you agree to Amazon's <a href="#" class="small-link">Conditions of Use</a> and
+            <a href="#" class="small-link">Privacy Notice</a>.
+        </p>
+
+        <p><a href="#" class="small-link">Need help?</a></p>
+         <a href="business.html">
+        <p><a href="#" class="small-link">Create a free business account</a></p>
+    </div>
+</a>
+    <p class="divider">New to Amazon?</p>
+     <a href="register.html">
+        <a href="register.html">
+    <button class="new-account-btn" onclick="createAccount()">Create your Amazon account</button>
+        </a>
+    </a>
+    <a href="business.html">
+    <button class="new-businessaccount-btn" onclick="createAccount()">Create your Amazon Business account</button>
+    </a>
+    <footer>
+        <a href="#">Conditions of Use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Help</a>
+        <p>© 1996-2025, Amazon Clone, Inc.</p>
+    </footer>
+
+    <script>
+        function signIn() {
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            let valid = true;
+
+            if (!email) {
+                document.getElementById("emailError").innerText = "Enter your email or mobile number";
+                valid = false;
+            } else document.getElementById("emailError").innerText = "";
+
+            if (!password) {
+                document.getElementById("passwordError").innerText = "Enter your password";
+                valid = false;
+            } else document.getElementById("passwordError").innerText = "";
+
+            // Navigate to product page if valid
+            if (valid) {
+                window.location.href = "index.html"; // Change name to your product page file
+            }
+        }
+
+        function createAccount() {
+            alert("Redirecting to account creation... (Add page later)");
+        }
+    </script>
+
+</body>
+</html>
+

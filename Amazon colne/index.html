@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - 10 Products Fully Visible</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-icon::before { content: "Cart"; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+        .main-nav { background: #232f3e; padding: 10px; }
+        .main-nav a { color: white; margin-right: 20px; text-decoration: none; }
+
+        /* NEW: American Amazon Style Hero Banner */
+        .us-hero-banner {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+                        url('https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2025/NewYearsDesktopHero_3000x1200_EN._CB596878392_.jpg') center/cover no-repeat;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .us-hero-banner { height: 400px; background-position: 70% center; }
+        }
+        .hero-text {
+            max-width: 600px;
+            margin-left: 60px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+        .hero-text h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+        .hero-text p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .hero-btn {
+            background: #ffd814;
+            color: #111;
+            padding: 16px 36px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .hero-btn:hover {
+            background: #f7ca00;
+        }
+
+        .hero { position: relative; max-width: 1500px; margin: 0 auto; }
+        .carousel { height: 500px; overflow: hidden; }
+        .carousel img { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; transition: opacity 1s; }
+        .carousel img.active { opacity: 1; }
+        .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px; font-size: 30px; cursor: pointer; }
+        .prev { left: 10px; } .next { right: 10px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1500px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .product-card {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .zoom-img { overflow: hidden; border-radius: 10px; margin-bottom: 15px; }
+        .zoom-img img { width: 100%; height: 230px; object-fit: cover; transition: transform 0.5s ease; }
+        .zoom-img:hover img { transform: scale(1.2); }
+        .price { font-size: 24px; font-weight: bold; color: #B12704; margin: 10px 0; }
+        .title { font-weight: bold; font-size: 16px; margin-bottom: 10px; line-height: 1.4; }
+        .add-to-cart-btn {
+            background: #ffd814; border: none; padding: 14px;
+            border-radius: 25px; cursor: pointer; font-weight: bold;
+            width: 100%; font-size: 16px; transition: 0.3s;
+        }
+        .add-to-cart-btn:hover { background: #f7ca00; }
+        .no-results {
+            grid-column: 1 / -1; text-align: center; font-size: 28px; color: #666; padding: 80px; display: none;
+        }
+        .no-results.show { display: block; }
+        .side-cart {
+            position: fixed; right: -420px; top: 0; width: 420px; height: 100vh;
+            background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            transition: right 0.4s ease; z-index: 2000; padding: 20px; overflow-y: auto;
+        }
+        .side-cart.open { right: 0; }
+        .close-cart { float: right; font-size: 35px; cursor: pointer; }
+        .cart-item { display: flex; margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .cart-item img { width: 90px; height: 90px; object-fit: cover; margin-right: 15px; border-radius: 8px; }
+        .remove-item { color: red; cursor: pointer; font-size: 13px; margin-top: 5px; }
+        footer { background: #232f3e; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+            <div class="search-bar">
+                <select><option>All</option></select>
+                    <input type="text" id="search-input" placeholder="Search Amazon" onkeyup="searchProducts()">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Hello, Sign in</a>
+                <a href="#">Returns<br>& Orders</a>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-nav">
+        <a href="#">Today's Deals</a>
+        <a href="#">Best Sellers</a>
+        <a href="#">Electronics</a>
+        <a href="#">Fashion</a>
+        <a href="#">Home</a>
+    </div>
+
+    <!-- ADDED: Real American Amazon Style Hero Banner -->
+    <div class="us-hero-banner">
+        <div class="hero-text">
+            <h1>New Year, New Deals</h1>
+            <p>Save big on electronics, home, fashion & more</p>
+            <button class="hero-btn">Shop Now</button>
+        </div>
+    </div>
+
+    <!-- Your Original Carousel (still there if you want it) -->
+    <!--
+    <section class="hero">
+        <div class="carousel">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/AmazonPay/Jupiter24/PC_EventHero_3000.CB563350451.jpg" class="active">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/OnePlus/Nord4/Launch/D131149677-Nord4-Launch---OnePlus-Nord-4---PC-Hero-3000X1200---July-16th---1.CB563350451.jpg">
+            <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Fashion/AF/SS25/Flip/1/PC_Hero_3000.CB563350451.jpg">
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">Previous</button>
+        <button class="next" onclick="changeSlide(1)">Next</button>
+    </section>
+    -->
+
+    <!-- 10 Products - ALL VISIBLE FROM START -->
+    <div class="product-grid" id="product-container">
+        <div class="no-results" id="no-results">No products found.</div>
+        <!-- ALL 10 PRODUCTS HAVE class="product-card show" SO THEY ARE VISIBLE -->
+        <div class="product-card show" data-name="macbook laptop apple computer">
+           <a href="mackbook page.html">
+            <div class="zoom-img"><img src="https://m.media-amazon.com/images/I/71jG+e7roXL.AC_SL1500.jpg" alt="MacBook"></div>
+            <div class="price">$1,299.00</div>
+            <div class="title">Apple 2024 MacBook Air 13-inch</div>
+           </a>
+            <button class="add-to-cart-btn" onclick="addToCart('MacBook Air', 1299, 'https://m.media-amazon.com/images/I/71jG+e7roXL.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="iphone_15_apple_phone_smartphone">
+           <a href="iphone15 12GB.html">
+            <div class="zoom-img"><img src="Iphone.jpg" alt="iPhone"></div>
+            <div class="price">$799.00</div>
+            <div class="title">iPhone 15 (128 GB)</div>
+           </a>
+            <button class="add-to-cart-btn" onclick="addToCart('iPhone 15', 799, 'https://m.media-amazon.com/images/I/71dT4OlnG+L.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="samsung tv television 4k smart">
+            <a href="Samsung Smart TV.html">
+            <div class="zoom-img"><img src="https://images.priceoye.pk/samsung-40-inch-smart-led-tv-40n5300-pakistan-priceoye-aew7q-500x500.webp" alt="Samsung TV"></div>
+            <div class="price">$897.99</div>
+            <div class="title">Samsung 65-Inch 4K Smart TV</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('Samsung 65 TV', 897.99, 'https://m.media-amazon.com/images/I/71mK4mW5L8L.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="ps5 playstation console gaming">
+            <a href="PlayStation5 concole.html">
+            <div class="zoom-img"><img src="https://www.mega.pk/images/bg-bt-ps5.webp" alt="PS5"></div>
+            <div class="price">$499.99</div>
+            <div class="title">PlayStation 5 Console</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('PS5 Console', 499.99, 'https://m.media-amazon.com/images/I/61t7U7LhQ2L.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="airpods pro apple earbuds wireless">
+            <a href="Airpods pro2nd generation.html">
+            <div class="zoom-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFYIPt-HeoNfq83BOodYHfmj4kIfknIowo3w&s.jpg" alt="AirPods"></div>
+            <div class="price">$189.00</div>
+            <div class="title">AirPods Pro 2nd Generation</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('AirPods Pro', 189, 'https://m.media-amazon.com/images/I/61SUj2s3J5L.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="kindle paperwhite ebook reader">
+            <a href="Kindle Paperwhite 16 GB.html">
+            <div class="zoom-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5j0IvEWFOH1c1yCLh2aM9lzLzPO2bAEZJHw&s.jpg" alt="Kindle"></div>
+            <div class="price">$149.99</div>
+            <div class="title">Kindle Paperwhite (16 GB)</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('Kindle Paperwhite', 149.99, 'https://m.media-amazon.com/images/I/71d7RfUDtdL.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="nike shoes sneakers running">
+            <a href="Nike Air Zoom Pegasus.html">
+            <div class="zoom-img"><img src="https://images.offerup.com/SmdzAhgfUIUeNyqMkORPFCUex5U=/1170x1130/3a3b/3a3b30da5a864bb8afbc6adfcd60af92.jpg" alt="Nike Shoes"></div>
+            <div class="price">$115.00</div>
+            <div class="title">Nike Air Zoom Pegasus</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('Nike Pegasus', 115, 'https://m.media-amazon.com/images/I/71wM6XWfO2L.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="coffee maker keurig machine">
+            <a href="Keuring K-mini coffee maker.html">
+            <div class="zoom-img"><img src="https://m.media-amazon.com/images/I/5121fsltSrL.jpg" alt="Keurig"></div>
+            <div class="price">$89.99</div>
+            <div class="title">Keurig K-Mini Coffee Maker</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('Keurig Mini', 89.99, 'https://m.media-amazon.com/images/I/71zW2J8d8sL.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="lego star wars building set">
+            <a href="LEGO Star Wars Millennium.html">
+            <div class="zoom-img"><img src="https://m.media-amazon.com/images/I/81nIauS111L.AC_SL1500.jpg" alt="LEGO"></div>
+            <div class="price">$159.99</div>
+            <div class="title">LEGO Star Wars Millennium Falcon</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('LEGO Falcon', 159.99, 'https://m.media-amazon.com/images/I/81oRrt1sobL.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card show" data-name="watch apple smartwatch fitness">
+            <a href="Apple Watch Series 9.html">
+            <div class="zoom-img"><img src="watch.jpeg" alt="Apple Watch"></div>
+            <div class="price">$399.00</div>
+            <div class="title">Apple Watch Series 9</div>
+            </a>
+            <button class="add-to-cart-btn" onclick="addToCart('Apple Watch S9', 399, 'https://m.media-amazon.com/images/I/71iO2Q3cOQL.AC_SL1500.jpg')">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Side Cart -->
+    <div class="side-cart" id="side-cart">
+        <h2>Shopping Cart <span class="close-cart" onclick="toggleCart()">×</span></h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+        <button style="width:100%; padding:15px; background:#ffd814; border:none; border-radius:25px; font-size:18px; margin-top:20px; cursor:pointer;">
+            Proceed to Checkout
+        </button>
+    </div>
+
+    <footer>
+        <p>Amazon Clone • 10 Products Working 100% • Now with US Amazon Hero Banner</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function searchProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const products = document.querySelectorAll('.product-card');
+            const noResults = document.getElementById('no-results');
+            let found = false;
+
+            products.forEach(product => {
+                const keywords = product.getAttribute('data-name') || "";
+                if (keywords.includes(query) || query === "") {
+                    product.classList.add('show');
+                    found = true;
+                } else {
+                    product.classList.remove('show');
+                }
+            });
+            noResults.style.display = (found || query === "") ? "none" : "block";
+        }
+
+        document.getElementById('search-input').addEventListener('keypress', e => {
+            if (e.key === 'Enter') searchProducts();
+        });
+
+        function addToCart(name, price, image) {
+            cart.push({ name, price, image });
+            updateCart();
+            alert(name + " added to cart!");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const itemsDiv = document.getElementById('cart-items');
+            const count = document.getElementById('cart-count');
+            const total = document.getElementById('cart-total');
+            count.textContent = cart.length;
+
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = "<p style='text-align:center;color:#999;padding:40px;'>Your cart is empty</p>";
+                total.textContent = "0.00";
+                return;
+            }
+
+            itemsDiv.innerHTML = "";
+            let sum = 0;
+            cart.forEach((item, i) => {
+                sum += item.price;
+                itemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            $${item.price.toFixed(2)}
+                            <div class="remove-item" onclick="removeFromCart(${i})">Remove</div>
+                        </div>
+                    </div>`;
+            });
+            total.textContent = sum.toFixed(2);
+        }
+
+        function toggleCart() {
+            document.getElementById('side-cart').classList.toggle('open');
+        }
+
+        function changeSlide(dir) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + dir + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(() => changeSlide(1), 6000);
+        slides[0].classList.add('active');
+        searchProducts(); // Show all on load
+    </script>
+</body>
+</html>

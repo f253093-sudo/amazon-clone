@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - PS5 Product</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+
+        /* PRODUCT PAGE WRAPPER WITH PADDING */
+        .product-page {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .price { font-size: 28px; font-weight: bold; color: #B12704; margin: 10px 0; }
+
+        footer {
+            background: #232f3e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        p { margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search Amazon">
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">Hello, Sign in</a>
+            <a href="#">Returns & Orders</a>
+        </nav>
+    </div>
+</header>
+
+<!-- PRODUCT PAGE WITH CLEAN PADDING -->
+<div class="product-page">
+
+    <img src="https://www.mega.pk/images/bg-bt-ps5.webp" alt="PS5" class="product-image">
+    <b><p style="font-size: 26px;">PlayStation 5 console gaming</p></b>
+    <div class="price">$499.99</div>
+    <b><p style="font-size:20px">Description:</p></b>
+    <p style="font-size:18px"><b>Storage:</b> Ultra-fast 825GB SSD for very quick loading.</p>
+    <p style="font-size:18px"><b>Graphics:</b> Supports 4K gaming with ray tracing.</p>
+    <p style="font-size:18px"><b>Performance:</b> Uses a custom AMD Zen 2 CPU + RDNA 2 GPU.</p>
+    <p style="font-size:18px"><b>Frame Rate:</b> Can run games up to 120 FPS on supported TVs.</p>
+    <p style="font-size:18px"><b>Controller:</b> DualSense controller with haptic feedback and adaptive triggers.</p>
+    <p style="font-size:18px"><b>Games:</b> Backward compatible with most PS4 games.</p>
+
+</div>
+
+<footer>
+    <p>Amazon Clone •</p>
+</footer>
+
+</body>
+</html>

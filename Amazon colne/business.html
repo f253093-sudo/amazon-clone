@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Account</title>
+    <style>
+        body { font-family: Arial; display: flex; justify-content: center; margin-top: 30px; }
+        .box { border: 1px solid #ddd; width: 350px; padding: 20px; border-radius: 5px; }
+        .btn { width: 100%; background: #f0c14b; padding: 10px; border: none; margin-top: 10px; cursor: pointer; }
+        input { width: 100%; padding: 9px; margin-top: 10px; border: 1px solid #aaa; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h3>Create Business Account</h3>
+        <input type="text" id="businessName" placeholder="Business Name">
+        <input type="text" id="businessEmail" placeholder="Business Email">
+        <input type="text" id="businessPhone" placeholder="Business Phone">
+        <button class="btn" onclick="saveBusiness()">Create Business Account</button>
+        <p style="font-size:12px;"><a href="signin.html">Back to Sign-In</a></p>
+    </div>
+
+<script>
+function saveBusiness() {
+    alert("Business Account Created!");
+    window.location.href = "form.html";
+}
+</script>
+
+</body>
+</html>

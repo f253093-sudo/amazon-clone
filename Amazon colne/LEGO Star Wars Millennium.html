@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - 10 Products Fully Visible</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-icon::before { content: "Cart"; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        .main-nav { background: #232f3e; padding: 10px; }
+        .main-nav a { color: white; margin-right: 20px; text-decoration: none; }
+
+        /* ⭐ Added container with padding */
+        .product-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .price { font-size: 24px; font-weight: bold; color: #B12704; margin: 10px 0; }
+
+        footer { background: #232f3e; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+
+            <div class="search-bar">
+                <select><option>All</option></select>
+                <input type="text" id="search-input" placeholder="Search Amazon" onkeyup="searchProducts()">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Hello, Sign in</a>
+                <a href="#">Returns<br>& Orders</a>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ⭐ LEGO Section Wrapped in Padding Container -->
+    <div class="product-container">
+        <img src="https://m.media-amazon.com/images/I/81nIauS111L.AC_SL1500.jpg" 
+             alt="LEGO" 
+             width="100%" 
+             style="border-radius: 10px;">
+
+        <b><p style="font-size: 24px; margin-top: 20px;">LEGO Star Wars Millennium Falcon</p></b>
+        <div class="price">$159.00</div>
+        <b><p style="font-size:20px; margin-top:10px;">Description:</p></b>
+        <p style="font-size:18px"><b>Iconic Design:</b> A detailed brick-built model recreating the Millennium Falcon’s classic look.</p>
+        <p style="font-size:18px"><b>Opening Panels:</b> Hinged top panels allow access to the ship’s interior sections.</p>
+        <p style="font-size:18px"><b>Rotating Turrets:</b> Includes functional rotating laser turrets for action play.</p>
+        <p style="font-size:18px"><b>Cockpit Access:</b> Features an opening cockpit that can seat minifigures.</p>
+        <p style="font-size:18px"><b>Interior Rooms:</b> Contains key interior areas like the main hold and hyperdrive section.</p>
+        <p style="font-size:18px"><b>Minifigure Set:</b> Comes with popular Star Wars characters (varies by set version).</p>
+    </div>
+
+    <footer>
+        <p>Amazon Clone •</p>
+    </footer>
+
+</body>
+</html>

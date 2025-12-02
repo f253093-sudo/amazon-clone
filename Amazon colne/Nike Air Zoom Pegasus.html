@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - Product Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+
+        /* PRODUCT PAGE WRAPPER WITH PADDING */
+        .product-page {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .price { font-size: 28px; font-weight: bold; color: #B12704; margin: 10px 0; }
+
+        footer {
+            background: #232f3e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search Amazon">
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">Hello, Sign in</a>
+            <a href="#">Returns & Orders</a>
+        </nav>
+    </div>
+</header>
+
+<!-- PRODUCT PAGE WITH CLEAN PADDING -->
+<div class="product-page">
+
+    <img src="https://images.offerup.com/SmdzAhgfUIUeNyqMkORPFCUex5U=/1170x1130/3a3b/3a3b30da5a864bb8afbc6adfcd60af92.jpg" alt="Nike Shoes" class="product-image">
+    <b><p style="font-size: 26px;">Nike Air Zoom Pegasus</p></b>
+    <div class="price">$115.00</div>
+    <b><p style="font-size:20px">Description:</p></b>
+    <p style="font-size:18px"><b>Lightweight Comfort:</b> Designed with a breathable upper that keeps the foot cool and comfortable during runs.</p>
+    <p style="font-size:18px"><b>Zoom Air Cushioning:</b> Features Nike’s Zoom Air units for responsive, springy cushioning with every stride.</p>
+    <p style="font-size:18px"><b>Durable Outsole:</b> Built with a high-traction rubber outsole for long-lasting grip on various surfaces.</p>
+    <p style="font-size:18px"><b>Secure Fit:</b> Flywire cables and a snug midfoot design provide a stable, locked-in feel.</p>
+    <p style="font-size:18px"><b>Smooth Ride:</b> Soft foam midsoles deliver a smooth and balanced heel-to-toe transition.</p>
+    <p style="font-size:18px"><b>Versatile Use:</b> Ideal for training, long-distance runs, and casual wear.</p>
+
+</div>
+
+<footer>
+    <p>Amazon Clone •</p>
+</footer>
+
+</body>
+</html>

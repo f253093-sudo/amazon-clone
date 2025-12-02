@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - Product Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-icon::before { content: "Cart"; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        /* Added Product Section Padding */
+        .product-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .price { 
+            font-size: 26px; 
+            font-weight: bold; 
+            color: #B12704; 
+            margin: 15px 0;
+        }
+
+        footer { 
+            background: #232f3e; 
+            color: white; 
+            text-align: center; 
+            padding: 30px; 
+            margin-top: 60px; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+
+            <div class="search-bar">
+                <select><option>All</option></select>
+                <input type="text" id="search-input" placeholder="Search Amazon">
+                <button>Search</button>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#">Hello, Sign in</a>
+                <a href="#">Returns<br>& Orders</a>
+                <div class="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!--  Product Section WITH Padding  -->
+    <div class="product-section">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFYIPt-HeoNfq83BOodYHfmj4kIfknIowo3w&s.jpg" alt="AirPods" width="100%" style="border-radius: 12px;">
+        <b><p style="font-size: 24px; margin-top: 20px;">AirPods Pro 2nd Generation</p></b>
+        <div class="price">$1,299.00</div>
+        <b><p style="font-size:20px; margin-top: 15px;">Description:</p></b>
+        <p style="font-size:18px;"><b>Active Noise Cancellation & Adaptive Transparency:</b>blocks outside noise while allowing awareness when needed.</p>
+        <p style="font-size:18px;"><b>Personalized Spatial Audio + Adaptive EQ:</b>sound adapts to your ear shape and head movements.</p>
+        <p style="font-size:18px;"><b>Battery life:</b>up to 6 hours per charge, 30 hours with MagSafe case.</p>
+        <p style="font-size:18px;"><b>MagSafe Charging Case (USB-C + U1 chip + speaker):</b>supports wireless charging and Find My features.</p>
+        <p style="font-size:18px;"><b>IPX4 Water / Sweat Resistance:</b>ideal for workouts and outdoor use.</p>
+        <p style="font-size:18px;"><b>Apple Ecosystem Integration:</b>instant pairing + touch controls for volume, skip, and noise modes.</p>
+
+    </div>
+
+    <footer>
+        <p>Amazon Clone •</p>
+    </footer>
+
+</body>
+</html>

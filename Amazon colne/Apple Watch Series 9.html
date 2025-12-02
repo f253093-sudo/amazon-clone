@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - 10 Products Fully Visible</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        /* MAIN PRODUCT PAGE PADDING ADDED */
+        .product-page {
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 40px 60px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        footer { background: #232f3e; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+            <div class="search-bar">
+                <select><option>All</option></select>
+                <input type="text" id="search-input" placeholder="Search Amazon">
+                <button>Search</button>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Hello, Sign in</a>
+                <a href="#">Returns<br>& Orders</a>
+                <div class="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PRODUCT PAGE WITH PADDING -->
+    <div class="product-page">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmgDIWIRvxDzqsjvEice2unm-3cBVdGcernw&s" 
+             alt="Apple Watch" width="100%" style="max-width: 900px; display:block; margin:auto; border-radius:12px;">
+
+        <br><br>
+
+        <b><p style="font-size: 28px;">Apple Watch Series 9</p></b>
+        <div class="price" style="font-size: 30px; margin: 10px 0;">$1,299.00</div>
+        <b><p style="font-size:20px">Description:</p></b>
+        <p style="font-size:18px"><b>Display:</b> On Retina LTPO OLED, 1.9-inch (45 mm model), 2000 nits peak brightness.</p>
+        <p style="font-size:18px"><b>Performance / Chip:</b> Apple S9 SiP with 4-core Neural Engine; fast on-device Siri.</p>
+        <p style="font-size:18px"><b>Battery life:</b> Up to 18 hours; up to 36 hours in low-power mode.</p>
+        <p style="font-size:18px"><b>Health & Sensors:</b> Heart rate, SpO₂, ECG, temperature, accelerometer, gyroscope, more.</p>
+        <p style="font-size:18px"><b>Size / Build Options:</b> 41mm or 45mm; aluminum or stainless steel.</p>
+        <p style="font-size:18px"><b>Smart Features:</b> Always-on display, GPS, optional cellular, wireless charging, gestures & Siri.</p>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Amazon Clone •</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - 10 Products Fully Visible</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        .product-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;             /*  Added padding */
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .price { font-size: 24px; font-weight: bold; color: #B12704; margin: 10px 0; }
+
+        footer { background: #232f3e; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </div>
+
+        <div class="search-bar">
+            <select><option>All</option></select>
+            <input type="text" placeholder="Search Amazon">
+            <button>Search</button>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">Hello, Sign in</a>
+            <a href="#">Returns<br>& Orders</a>
+            <div class="cart-icon">
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!--  Wrapped product in a padded container -->
+<div class="product-section">
+    <img src="https://images.priceoye.pk/samsung-40-inch-smart-led-tv-40n5300-pakistan-priceoye-aew7q-500x500.webp" 
+         alt="Samsung TV" width="100%" style="border-radius: 10px;">
+
+    <b><p style="font-size: 24px;">Samsung 65-Inch 4K Smart TV</p></b>
+    <div class="price">$897.99</div>
+
+    <b><p style="font-size:20px">Description:</p></b>
+    <p><b>Display/Screen size:</b> 65-inch 4K UHD (3840×2160)</p>
+    <p><b>Display Technology:</b> QLED / LED panel with 4K support.</p>
+    <p><b>Picture Quality Enhancements:</b> HDR10+, upscaling, dimming, vivid colors.</p>
+    <p><b>Smart TV Functionality:</b> Runs on Tizen OS.</p>
+    <p><b>Sound & Audio:</b> Built-in speakers with enhanced audio features.</p>
+</div>
+
+<footer>
+    <p>Amazon Clone •</p>
+</footer>
+
+</body>
+</html>

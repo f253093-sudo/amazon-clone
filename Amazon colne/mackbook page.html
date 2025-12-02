@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - 10 Products Fully Visible</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f3f3f3; }
+
+        header { background: #131921; color: white; padding: 10px 0; position: relative; z-index: 1000; }
+        .header-container { display: flex; align-items: center; max-width: 1500px; margin: 0 auto; padding: 0 10px; }
+        .logo img { width: 100px; }
+        .search-bar { flex: 1; display: flex; margin: 0 20px; }
+        .search-bar select { padding: 10px; background: #f3f3f3; border: none; border-radius: 4px 0 0 4px; }
+        .search-bar input { flex: 1; padding: 10px; border: none; font-size: 16px; }
+        .search-bar button { padding: 0 40px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; font-size: 18px; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 28px; }
+        .cart-icon::before { content: "Cart"; }
+        .cart-count { position: absolute; top: -8px; right: -10px; background: #f08804; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        .main-nav { background: #232f3e; padding: 10px; }
+        .main-nav a { color: white; margin-right: 20px; text-decoration: none; }
+
+        /* Added padding section */
+        .product-details {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .product-details img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .product-details p {
+            margin: 10px 0;
+        }
+
+        footer { background: #232f3e; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            </div>
+            <div class="search-bar">
+                <select><option>All</option></select>
+                <input type="text" id="search-input" placeholder="Search Amazon">
+                <button>Search</button>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Hello, Sign in</a>
+                <a href="#">Returns<br>& Orders</a>
+                <div class="cart-icon">
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Product Details With Padding -->
+    <div class="product-details">
+        <img src="https://m.media-amazon.com/images/I/71jG+e7roXL.AC_SL1500.jpg" alt="MacBook">
+
+        <p style="font-size: 24px; font-weight: bold;">Apple 2024 MacBook Air 13-inch</p>
+
+        <div class="price" style="font-size: 24px; font-weight: bold; color: #B12704;">$1,299.00</div>
+        <p style="font-size:20px; font-weight:bold;">Description:</p>
+        <p><b>Display:</b> 13.6-inch Liquid Retina, 2560×1664 resolution, 500 nits brightness.</p>
+        <p><b>Processor / Chipset:</b> Apple M3 chip (8-core CPU, integrated GPU).</p>
+        <p><b>Memory (RAM):</b> Base model typically 16 GB unified memory (upgradeable).</p>
+        <p><b>Storage (SSD):</b> Starts at 256 GB SSD (configurable to higher storage options).</p>
+        <p><b>Battery life:</b> Up to ~18 hours movie playback or ~15 hours web browsing.</p>
+        <p><b>Ports & Connectivity:</b> Two Thunderbolt/USB-C ports, MagSafe charging, 3.5mm headphone jack, Wi-Fi 6E, Bluetooth 5.3.</p>
+    </div>
+
+    <footer>
+        <p>Amazon Clone •</p>
+    </footer>
+
+</body>
+</html>
